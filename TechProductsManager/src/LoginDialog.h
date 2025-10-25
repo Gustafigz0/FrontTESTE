@@ -4,26 +4,27 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QLabel>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 
-class LoginDialog : public QDialog
-{
+class LoginDialog : public QDialog {
     Q_OBJECT
-
 public:
     explicit LoginDialog(QWidget *parent = nullptr);
-    ~LoginDialog();
-
-private slots:
-    void handleLogin();
+    QString getUsername() const;
+    QString getPassword() const;
 
 private:
-    void setupUI();
-    bool validateCredentials(const QString &username, const QString &password);
-    
+    QLabel *titleLabel;
+    QLabel *usernameLabel;
+    QLabel *passwordLabel;
     QLineEdit *usernameEdit;
     QLineEdit *passwordEdit;
     QPushButton *loginButton;
+    QPushButton *cancelButton;
+    
+    void setupUI();
 };
 
 #endif // LOGINDIALOG_H
